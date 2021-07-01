@@ -5,7 +5,7 @@
 //!
 //! This module shouldn't be accessed directly. Modules from the the crate level provide a safe API to interact
 //! with the crate
-use super::bindings::Windows::Win32::Automation::{SysStringLen, BSTR};
+use super::bindings::Windows::Win32::System::OleAutomation::{SysStringLen, BSTR};
 use std::mem::MaybeUninit;
 use windows::{Abi, Guid};
 

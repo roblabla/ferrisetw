@@ -10,7 +10,7 @@
 //!
 //! [TryParse]: crate::parser::TryParse
 //! [Property]: crate::native::tdh_types::Property
-use super::bindings::Windows::Win32::Etw;
+use super::bindings::Windows::Win32::System::Diagnostics::Etw;
 use crate::native::etw_types::EventPropertyInfo;
 use num_traits::FromPrimitive;
 

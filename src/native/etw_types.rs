@@ -6,10 +6,8 @@
 //!
 //! In most cases a user of the crate won't have to deal with this and can directly obtain the data
 //! needed by using the functions exposed by the modules at the crate level
-use super::bindings::Windows::Win32::{
-    Etw,
-    SystemServices::{MAX_PATH, PSTR},
-};
+use super::bindings::Windows::Win32::System::Diagnostics::Etw;
+use super::bindings::Windows::Win32::System::SystemServices::{MAX_PATH, PSTR};
 use crate::native::tdh_types::Property;
 use crate::provider::Provider;
 use crate::trace::{TraceData, TraceProperties, TraceTrait};
@@ -348,10 +346,10 @@ pub enum DecodingSource {
 impl From<Etw::DECODING_SOURCE> for DecodingSource {
     fn from(val: Etw::DECODING_SOURCE) -> Self {
         match val {
-            Etw::DECODING_SOURCE::DecodingSourceXMLFile => DecodingSource::DecodingSourceXMLFile,
-            Etw::DECODING_SOURCE::DecodingSourceWbem => DecodingSource::DecodingSourceWbem,
-            Etw::DECODING_SOURCE::DecodingSourceWPP => DecodingSource::DecodingSourceWPP,
-            Etw::DECODING_SOURCE::DecodingSourceTlg => DecodingSource::DecodingSourceTlg,
+            Etw::DecodingSourceXMLFile => DecodingSource::DecodingSourceXMLFile,
+            Etw::DecodingSourceWbem => DecodingSource::DecodingSourceWbem,
+            Etw::DecodingSourceWPP => DecodingSource::DecodingSourceWPP,
+            Etw::DecodingSourceTlg => DecodingSource::DecodingSourceTlg,
             _ => DecodingSource::DecodingSourceMax,
         }
     }

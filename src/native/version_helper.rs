@@ -5,7 +5,7 @@
 //!
 //! At the moment the only option available is to check if the actual System Version is greater than
 //! Win8, is the only check we need for the crate to work as expected
-use super::bindings::Windows::Win32::{SystemServices, WindowsProgramming};
+use super::bindings::Windows::Win32::System::{SystemServices, WindowsProgramming};
 use crate::traits::*;
 
 /// Version Helper native error
@@ -40,25 +40,25 @@ fn verify_system_version(major: u8, minor: u8, sp_major: u16) -> VersionHelperRe
     unsafe {
         condition_mask = WindowsProgramming::VerSetConditionMask(
             condition_mask,
-            WindowsProgramming::VER_FLAGS::VER_MAJORVERSION,
+            WindowsProgramming::VER_MAJORVERSION,
             VER_GREATER_OR_EQUAL,
         );
         condition_mask = WindowsProgramming::VerSetConditionMask(
             condition_mask,
-            WindowsProgramming::VER_FLAGS::VER_MINORVERSION,
+            WindowsProgramming::VER_MINORVERSION,
             VER_GREATER_OR_EQUAL,
         );
         condition_mask = WindowsProgramming::VerSetConditionMask(
             condition_mask,
-            WindowsProgramming::VER_FLAGS::VER_SERVICEPACKMAJOR,
+            WindowsProgramming::VER_SERVICEPACKMAJOR,
             VER_GREATER_OR_EQUAL,
         );
 
         Ok(WindowsProgramming::VerifyVersionInfoA(
             &mut os_version,
-            WindowsProgramming::VER_FLAGS::VER_MAJORVERSION
-                | WindowsProgramming::VER_FLAGS::VER_MINORVERSION
-                | WindowsProgramming::VER_FLAGS::VER_SERVICEPACKMAJOR,
+            WindowsProgramming::VER_MAJORVERSION
+                | WindowsProgramming::VER_MINORVERSION
+                | WindowsProgramming::VER_SERVICEPACKMAJOR,
             condition_mask,
         ) != false)
     }

@@ -199,7 +199,7 @@ impl Schema {
     ///     let schema = schema_locator.event_schema(record)?;
     ///     let event_version = schema.event_version();
     /// };
-    /// ```  
+    /// ```
     pub fn event_version(&self) -> u8 {
         self.record.EventHeader.EventDescriptor.Version
     }
@@ -214,7 +214,7 @@ impl Schema {
     ///     let schema = schema_locator.event_schema(record)?;
     ///     let pid = schema.process_id();
     /// };
-    /// ```  
+    /// ```
     pub fn process_id(&self) -> u32 {
         self.record.EventHeader.ProcessId
     }
@@ -229,7 +229,7 @@ impl Schema {
     ///     let schema = schema_locator.event_schema(record)?;
     ///     let tid = schema.thread_id();
     /// };
-    /// ```  
+    /// ```
     pub fn thread_id(&self) -> u32 {
         self.record.EventHeader.ThreadId
     }
@@ -244,7 +244,7 @@ impl Schema {
     ///     let schema = schema_locator.event_schema(record)?;
     ///     let timestamp = schema.timestamp();
     /// };
-    /// ```  
+    /// ```
     pub fn timestamp(&self) -> i64 {
         self.record.EventHeader.TimeStamp
     }
@@ -326,7 +326,7 @@ impl Schema {
         self.schema.opcode_name()
     }
 
-    pub(crate) fn property_count(&self) -> u32 {
+    pub fn property_count(&self) -> u32 {
         self.schema.property_count()
     }
 

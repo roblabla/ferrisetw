@@ -1,16 +1,19 @@
 fn main() {
     windows_macros::build!(
-        Windows::Win32::Etw::*,
-        Windows::Win32::Debug::WIN32_ERROR,
-        Windows::Win32::SystemServices::{
-            PSTR, MAX_PATH, VER_GREATER_EQUAL, LocalFree
+        Windows::Win32::System::Diagnostics::Etw::*,
+        Windows::Win32::System::Diagnostics::Debug::*,
+        Windows::Win32::System::SystemServices::{
+            PSTR, MAX_PATH, VER_GREATER_EQUAL
         },
-        Windows::Win32::Automation::{
+        Windows::Win32::System::Memory::LocalFree,
+        Windows::Win32::System::OleAutomation::{
             SysStringLen, BSTR
         },
-        Windows::Win32::WindowsProgramming::{
+        Windows::Win32::System::WindowsProgramming::{
             FILETIME, GetSystemTimeAsFileTime, OSVERSIONINFOEXA,
-            VerifyVersionInfoA, VerSetConditionMask
+            VerifyVersionInfoA, VerSetConditionMask, VER_FLAGS,
+            // We need all WindowsProgramming for VER_FLAGS variants...
+            VER_MAJORVERSION, VER_MINORVERSION, VER_SERVICEPACKMAJOR
         },
         Windows::Win32::Security::{ConvertSidToStringSidA, PSID},
     );

@@ -20,12 +20,12 @@ impl PropertyInfo {
     }
 }
 
-pub(crate) struct PropertyIter {
+pub struct PropertyIter {
     properties: Vec<Property>,
 }
 
 impl PropertyIter {
-    fn enum_properties(schema: &Schema, prop_count: u32) -> Vec<Property> {
+    pub fn enum_properties(schema: &Schema, prop_count: u32) -> Vec<Property> {
         let mut properties = Vec::new();
         for i in 0..prop_count {
             properties.push(schema.property(i));

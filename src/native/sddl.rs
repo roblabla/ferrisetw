@@ -1,7 +1,6 @@
-use super::bindings::Windows::Win32::{
-    Security,
-    SystemServices::{LocalFree, PSTR},
-};
+use super::bindings::Windows::Win32::Security;
+use super::bindings::Windows::Win32::System::Memory::LocalFree;
+use super::bindings::Windows::Win32::System::SystemServices::PSTR;
 use crate::traits::*;
 use std::str::Utf8Error;
 
